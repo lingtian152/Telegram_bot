@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  telegram_bot:
+    container_name: telegram_bot
+    build:
+      context: .
+      dockerfile: dockerfile
+    deploy:
+      resources:
+        limits:
+          cpus: "1.00"
+          memory: 500M
+    volumes:
+      - .:/app
+    restart: always
+    network_mode: host
+    command: yarn start
